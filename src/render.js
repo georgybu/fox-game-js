@@ -35,17 +35,16 @@ class Renderer {
   }
 
   renderIcons(state) {
+    const getIcon = (name) => {
+      const cssClass = state.action === name ? "highlighted" : "";
+      return `<div class="icon ${cssClass} ${name}-icon"></div>`;
+    };
+
     this.icons.innerHTML = `
       <div class="icons">
-        <div class="icon ${
-          state.action === "fish" ? "highlighted" : ""
-        } fish-icon"></div>
-        <div class="icon ${
-          state.action === "poop" ? "highlighted" : ""
-        } poop-icon"></div>
-        <div class="icon ${
-          state.action === "weather" ? "highlighted" : ""
-        } weather-icon"></div>
+        ${getIcon("fish")}
+        ${getIcon("poop")}
+        ${getIcon("weather")}
       </div>
     `;
   }
